@@ -24,7 +24,12 @@ io.on('connection', client => {
         //     numClients = Object.keys(allUsers).length;
         // }
 
-        let numClients = io.sockets.adapter.rooms.get(gameCode).size;
+        let clients = io.sockets.adapter.rooms.get(gameCode);
+
+        let numClients = 0;
+        if (clients) {
+            let numClients = io.sockets.adapter.rooms.get(gameCode).size;
+        }
 
         if (numClients === 0) {
             client.emit('unknownGame');
