@@ -134,7 +134,7 @@ function handleUnknownGame() {
 
 function handleTooManyPlayers() {
     reset();
-    alert('This game has already started');
+    alert('The lobby if full');
 }
 
 function reset() {
