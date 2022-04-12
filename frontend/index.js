@@ -14,16 +14,14 @@ joinGameButton.addEventListener('click', joinGame);
 
 function newGame() {
     socket.emit('newGame');
-    init();
 }
 
 function joinGame() {
     const code = gameCodeInput.value;
     socket.emit('joinGame', code);
-    init();
 }
 
-const socket = io('https://limitless-brushlands-29107.herokuapp.com/');
+const socket = io('127.0.0.1:3000');
 
 socket.on('init', handleInit);
 socket.on('gameState', handleGameState);
@@ -83,6 +81,7 @@ function paintPlayer(playerState, size, color) {
 
 function handleInit(number) {
     playerNumber = number;
+    init();
 }
 
 function handleGameState(gameState) {
