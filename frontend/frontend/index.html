@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Snake Multiplayer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <style>
+        #gameScreen, #lobbyScreen, #playButton {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <section class="vh-100">
+        <div class="container h-100">
+
+            <div id="initialScreen" class="h-100">
+                <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                    <h1>Snake Multiplayer</h1>
+                    <button
+                        type="submit"
+                        class="btn btn-success"
+                        id="newGameButton"
+                    >Create New Game</button>
+                    <div>OR</div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Enter Game Code" id="gameCodeInput"/>
+                    </div>
+                    <button
+                            type="submit"
+                            class="btn btn-success"
+                            id="joinGameButton"
+                    >Join Game</button>
+                </div>
+            </div>
+
+            <div id="lobbyScreen" class="h-100">
+                <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                    <h1>Room code: <span id="gameCodeDisplay"></span></h1>
+                    <h1>Players connected: <span id="playersConnectedDisplay"></span> / 2</h1>
+                    <button
+                            type="submit"
+                            class="btn btn-success"
+                            id="playButton"
+                    >Play</button>
+                </div>
+            </div>
+
+            <div id="gameScreen" class="h-100">
+                <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+</html>
