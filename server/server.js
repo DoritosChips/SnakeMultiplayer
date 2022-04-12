@@ -11,6 +11,7 @@ io.on('connection', client => {
     client.on('keydown', handleKeyDown);
     client.on('newGame', handleNewGame);
     client.on('joinGame', handleJoinGame);
+    client.on('play', handlePlay);
 
     function handleJoinGame(gameCode) {
         //const room = io.sockets.adapter.rooms[gameCode];
@@ -47,7 +48,9 @@ io.on('connection', client => {
         client.number = 2;
         client.emit('init', 2)
 
-        startGameInterval(gameCode);
+        io.sockets.in(gameCode)
+            .emit('playerJoined', numClients + 1);
+
     }
 
     function handleNewGame() {
@@ -78,6 +81,16 @@ io.on('connection', client => {
         if (vel) {
             state[roomName].players[client.number - 1].vel = vel;
         }
+    }
+
+
+    function handlePlay() {
+        const gameCode = clientRooms[client.id];
+
+        io.sockets.in(gameCode)
+            .emit('gameStarted');
+
+        startGameInterval(gameCode);
     }
 });
 
