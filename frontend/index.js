@@ -21,7 +21,7 @@ function joinGame() {
     socket.emit('joinGame', code);
 }
 
-const socket = io('127.0.0.1:3000');
+const socket = io('https://limitless-brushlands-29107.herokuapp.com/');
 
 socket.on('init', handleInit);
 socket.on('gameState', handleGameState);
