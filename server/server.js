@@ -28,7 +28,7 @@ io.on('connection', client => {
 
         let numClients = 0;
         if (clients) {
-            let numClients = io.sockets.adapter.rooms.get(gameCode).size;
+            numClients = io.sockets.adapter.rooms.get(gameCode).size;
         }
 
         if (numClients === 0) {
@@ -64,6 +64,10 @@ io.on('connection', client => {
 
     function handleKeyDown(key) {
         const roomName = clientRooms[client.id];
+
+        if (!state[roomName]) {
+            return;
+        }
 
         if (!roomName) {
             return;
